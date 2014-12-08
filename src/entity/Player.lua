@@ -84,7 +84,7 @@ function Player:update(dt)
 	--self.maxMana = self.int * 50
 
 	if self.canMove then
-		if keyboard:isDown("up") or keyboard:isDown("z")  then
+		if keyboard:isDown("up") or keyboard:isDown("w")  then
 			self.spd.y = self.spd.y * IEntity.FRICTION - dt * IEntity.SPEED * (1 - IEntity.FRICTION)
 			self.dir.y = -1
 		elseif keyboard:isDown("down") or keyboard:isDown("s")  then
@@ -94,7 +94,7 @@ function Player:update(dt)
 			self.diagonale = false
 			self.spd.y = self.spd.y * IEntity.FRICTION
 		end
-		if keyboard:isDown("left") or keyboard:isDown("q") then
+		if keyboard:isDown("left") or keyboard:isDown("a") then
 			self.spd.x = self.spd.x * IEntity.FRICTION - dt * IEntity.SPEED * (1 - IEntity.FRICTION)
 			self.dir.x = -1
 		elseif keyboard:isDown("right") or keyboard:isDown("d") then
