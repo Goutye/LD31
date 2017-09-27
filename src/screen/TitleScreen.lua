@@ -15,7 +15,7 @@ function TitleScreen:initialize()
 end
 
 function TitleScreen:update(dt)
-	if mouse:isReleased("l") or keyboard:isReleased("return") then
+	if mouse:isReleased(1) or keyboard:isReleased("return") then
 		if self.onTuto then
 			engine:screen_setNext(GameScreen:new())
 		else

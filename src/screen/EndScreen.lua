@@ -15,7 +15,7 @@ function EndScreen:initialize(GS)
 end
 
 function EndScreen:update(dt)
-	if mouse:isReleased("l") then
+	if mouse:isReleased(1) then
 		engine:screen_setNext(TitleScreen:new())
 	end
 end

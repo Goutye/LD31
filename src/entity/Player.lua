@@ -171,7 +171,7 @@ function Player:interactArena(dt)
 			engine.screen:addEntity(Projectile:new(self.id, pos, self.dirAttack, self.inventaire.dist.damage * self.int, 0, 1, 5, 0, false))
 			self.mana = self.mana - self.inventaire.dist.coutMana
 		else
-			if mouse:isPressed("r") then
+			if mouse:isPressed(2) then
 				self.canMove = true
 				self.attackDist = false
 				self.castbar = nil
@@ -193,7 +193,7 @@ function Player:interactArena(dt)
 			self.attackSort = false
 			self.mana = self.mana - self.inventaire.sort.coutMana
 		else
-			if keyboard:isPressed(" ") then
+			if keyboard:isPressed("space") then
 				self.canMove = true
 				self.attackSort = false
 				self.castbar = nil
@@ -205,10 +205,10 @@ function Player:interactArena(dt)
 			self.waitbar = nil
 		end
 	elseif self.canMove then
-		if mouse:isPressed("l") then
+		if mouse:isPressed(1) then
 			self.attack = true
 			self.waitbar = CastBar:new(self.inventaire.hand.castTime, self, "")
-			local x,y = mouse:wherePressed("l")
+			local x,y = mouse:wherePressed(1)
 			local dir = engine:vector_normalize(engine:vector_of(self.pos, {x = x, y = y}))
 			self.dirAttack = dir
 			local boss = engine.screen.tournament.arena.boss
@@ -217,22 +217,22 @@ function Player:interactArena(dt)
 				and engine:vector_length(engine:vector_of(self:getCenter(), boss:getCenter())) < self.size*2 then
 				boss:hit(self.inventaire.hand.damage * self.str)
 			end
-		elseif mouse:isReleased("l") then
+		elseif mouse:isReleased(1) then
 		end
-		if mouse:isPressed("r") then
+		if mouse:isPressed(2) then
 			if self.inventaire.dist.name == 'Fireball' and self.mana > self.inventaire.dist.coutMana then
 				self.attackDist = true
 				self.canMove = false
-				local x,y = mouse:wherePressed("r")
+				local x,y = mouse:wherePressed(2)
 				local dir = engine:vector_normalize(engine:vector_of(self.pos,{x = x, y = y}))
 				self.dirAttack = dir
 				self.castbar = CastBar:new(self.inventaire.dist.castTime, self, self.inventaire.dist.name, 'attack')
 			end
-		elseif mouse:isDown("r") and self.inventaire.dist.name == 'Shield' then
+		elseif mouse:isDown(2) and self.inventaire.dist.name == 'Shield' then
 			self.defense = true
-		elseif mouse:isReleased("r") then
+		elseif mouse:isReleased(2) then
 			self.defense = false
-		elseif keyboard:isPressed(" ") and self.inventaire.sort ~= nil then
+		elseif keyboard:isPressed("space") and self.inventaire.sort ~= nil then
 			if self.inventaire.sort.name == 'Interruptball' and self.mana > self.inventaire.sort.coutMana then
 				self.attackSort = true
 				self.canMove = false

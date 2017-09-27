@@ -11,7 +11,7 @@ function Engine:initialize()
 
 	self.music = Music:new()
 
-	self.font14 = love.graphics.newFont("assets/font/PIXELITE.FON", 14)
+	self.font14 = love.graphics.newFont("assets/font/visitor.ttf", 14)
 	self.font60 = love.graphics.newFont("assets/font/chinese_rocks_rg.ttf", 60)
 	self.fontTitle = love.graphics.newFont("assets/font/City_of_Light.ttf", 60)
 
